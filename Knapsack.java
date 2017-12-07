@@ -122,7 +122,7 @@ public class Knapsack {
                 knapCap -= currentItem.getWeight();
             }
             else {
-                totalValue += (double)(currentItem.getValue() / knapCap);
+                totalValue += (currentItem.getValue() * ((double)knapCap/(double)currentItem.getWeight()));
                 return totalValue;
             }
         }
@@ -135,8 +135,25 @@ public class Knapsack {
      * @return the total value of all packed items
      */
     public double greedyValueFractional() {
-        //TODO: Add your code here!
-        return 0.0;
+        int knapCap = this.capacity;
+        double totalValue = 0;
+        Comparator<Item> compVaue = new CompVaue();
+        this.hiImBarryScott_NothingBeatsABitOfTurboPower = new PriorityQueue<>(compVaue);
+        for(Item i: items){
+            this.hiImBarryScott_NothingBeatsABitOfTurboPower.add(i);
+        }
+        while(knapCap > 0 || this.hiImBarryScott_NothingBeatsABitOfTurboPower.peek() == null){
+            Item currentItem = this.hiImBarryScott_NothingBeatsABitOfTurboPower.poll();
+            if (knapCap - currentItem.getWeight() >= 0){
+                totalValue += currentItem.getValue();
+                knapCap -= currentItem.getWeight();
+            }
+            else {
+                totalValue += (currentItem.getValue() * ((double)knapCap/(double)currentItem.getWeight()));
+                return totalValue;
+            }
+        }
+        return totalValue;
     }
 
     /**
@@ -145,8 +162,25 @@ public class Knapsack {
      * @return the total value of all packed items
      */
     public double greedyEfficiencyFractional() {
-        //TODO: Add your code here!
-        return 0.0;
+        int knapCap = this.capacity;
+        double totalValue = 0;
+        Comparator<Item> compEfficiency = new CompEfficiency();
+        this.hiImBarryScott_NothingBeatsABitOfTurboPower = new PriorityQueue<>(compEfficiency);
+        for(Item i: items){
+            this.hiImBarryScott_NothingBeatsABitOfTurboPower.add(i);
+        }
+        while(knapCap > 0 || this.hiImBarryScott_NothingBeatsABitOfTurboPower.peek() == null){
+            Item currentItem = this.hiImBarryScott_NothingBeatsABitOfTurboPower.poll();
+            if (knapCap - currentItem.getWeight() >= 0){
+                totalValue += currentItem.getValue();
+                knapCap -= currentItem.getWeight();
+            }
+            else {
+                totalValue += (currentItem.getValue() * ((double)knapCap/(double)currentItem.getWeight()));
+                return totalValue;
+            }
+        }
+        return totalValue;
     }
 
     /**
